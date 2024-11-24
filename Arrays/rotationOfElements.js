@@ -1,13 +1,48 @@
 'use strict';
 
-//rotate to right
-
-const array = [3,4,5,2,1,7];
+const array = [1,2,3,4,5];
 const shiftValue = 2;
-const rotateElements = (array, k) => {
-    const arraySliced =  array.splice(k);
-    const resultantArray = [...arraySliced,...array];
-    return resultantArray;
+//rotate to right
+// const rotateElements = (array, k) => {
+// const arraySliced =  array.splice(k);
+// const resultantArray = [...arraySliced,...array];
+// return resultantArray;
+// };
+
+// rotate to left
+// const rotateElements = (array,k) =>{
+//     const arraySliced =  array.splice(-k);
+//     const resultantArray = [...arraySliced,...array];
+//     return resultantArray;
+// };
+
+// reverse
+const reverse = (array, start=0, end=4) => {
+    while (start < end) {
+        const temp = array[start];
+        array[start] = array[end];
+        array[end] = temp;
+        start++;
+        end--;
+    }
+    return array
 };
 
-console.log(rotateElements(array,shiftValue));
+// // rotate to left
+// const rotateElements = (array, k) => {
+    //     reverse(array,0,array.length-1);
+    //     reverse(array,k,array.length-1);
+    //     reverse(array,0,k-1);
+    //     return array;
+    // };
+    
+//  //rotate to right
+const rotateElements = (array, k) => {
+    reverse(array,0,array.length-1);
+    reverse(array,k+1,array.length-1);
+    reverse(array,0,k);
+    return array;
+};
+
+console.log(reverse(array))
+console.log(rotateElements(array, shiftValue));
